@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
@@ -8,46 +8,43 @@ plugins {
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
     defaultConfig {
-        applicationId "com.fearaujo.temper"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(path: ':data')
     implementation project(path: ':model')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$app_compat_version"
-    implementation "androidx.core:core-ktx:$core_ktx_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
-    implementation "androidx.paging:paging-runtime:$paging_version"
-    implementation "com.google.android.material:material:$material_version"
-
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     testImplementation "junit:junit:$junit_version"
-    testImplementation "org.koin:koin-test:$koin_version"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
-    androidTestImplementation "org.koin:koin-test:$koin_version"
-    androidTestImplementation "androidx.test:runner:$test_runner_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
-
+    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 }
