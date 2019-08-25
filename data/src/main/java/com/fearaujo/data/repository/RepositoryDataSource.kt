@@ -24,7 +24,10 @@ class RepositoryDataSource(
     private val repoLiveData = MutableLiveData<RepositoryState>()
     private val supervisorJob = SupervisorJob()
 
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Contractor>) {
+    override fun loadInitial(
+            params: LoadInitialParams<Int>,
+            callback: LoadInitialCallback<Int, Contractor>
+    ) {
         fetchContractors(INITIAL_PAGE) { contractors ->
             callback.onResult(contractors, null, increasePage(INITIAL_PAGE))
         }
