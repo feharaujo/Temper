@@ -7,6 +7,8 @@ object PageDateConverter {
 
     private const val pattern = "yyyy-MM-dd"
 
+    fun increaseDateInDays(days: Int): Date = increaseDateInDays(Date(), days)
+
     fun increaseDateInDays(date: Date, days: Int): Date {
         val cal = Calendar.getInstance()
         cal.time = date

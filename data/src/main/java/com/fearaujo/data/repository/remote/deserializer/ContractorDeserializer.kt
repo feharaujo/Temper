@@ -1,16 +1,16 @@
 package com.fearaujo.data.repository.remote.deserializer
 
-import com.fearaujo.data.repository.remote.DATA_NODE_KEY
+import com.fearaujo.data.di.DATA_NODE_KEY
 import com.fearaujo.model.Contractor
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
 import java.lang.reflect.Type
 
-class ContractorDeserializer : JsonDeserializer<List<Contractor>> {
+class ContractorDeserializer : JsonDeserializer<ArrayList<Contractor>> {
 
-    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): List<Contractor> {
-        val contractorsList = mutableListOf<Contractor>()
+    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): ArrayList<Contractor> {
+        val contractorsList = ArrayList<Contractor>()
 
         json?.let { rootElement ->
             val rootObject = rootElement.asJsonObject

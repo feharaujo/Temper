@@ -1,6 +1,5 @@
-package com.fearaujo.data
+package com.fearaujo.data.repository.remote.deserializer
 
-import com.fearaujo.data.repository.remote.deserializer.ContractorDeserializer
 import com.fearaujo.model.Contractor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -11,7 +10,6 @@ import org.junit.Test
 import java.io.InputStream
 import java.lang.reflect.Type
 import java.util.*
-import kotlin.collections.ArrayList
 
 class ContractorDeserializerTest {
 
@@ -28,7 +26,7 @@ class ContractorDeserializerTest {
 
     @Test
     fun `should deserialize with success from json file with custom deserializer`() {
-        val jsonFile = this.javaClass.classLoader!!.getResourceAsStream("Response.json")
+        val jsonFile = this.javaClass.classLoader!!.getResourceAsStream("Success_Response.json")
         val jsonString = convertStreamToString(jsonFile)
 
         val contractors = gson.fromJson<ArrayList<Contractor>>(jsonString, type)
