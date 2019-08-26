@@ -5,13 +5,12 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 import org.koin.test.KoinTest
-import java.io.File
 import java.io.InputStream
 import java.util.*
 
 abstract class BaseMockWebServerTest : KoinTest {
 
-    protected lateinit var mockServer: MockWebServer
+    private lateinit var mockServer: MockWebServer
 
     @Before
     open fun setUp() {
@@ -34,14 +33,19 @@ abstract class BaseMockWebServerTest : KoinTest {
 
     fun getMockUrl() = mockServer.url("/").toString()
 
-    fun mockHttpResponse(fileName: String, responseCode: Int) = mockServer.enqueue(
+    fun mockHttpResponse(fileName: String? = null, responseCode: Int) = mockServer.enqueue(
             MockResponse()
                     .setResponseCode(responseCode)
                     .setBody(getJson(fileName)))
 
-    private fun getJson(path: String): String {
-        val jsonFile = this.javaClass.classLoader!!.getResourceAsStream(path)
-        return convertStreamToString(jsonFile)
+    private fun getJson(path: String?): String {
+        return path?.let {
+            val jsonFile = this.javaClass.classLoader!!.getResourceAsStream(path)
+            convertStreamToString(jsonFile)
+        } ?: run {
+            ""
+        }
+
     }
 
     // TODO: refactor

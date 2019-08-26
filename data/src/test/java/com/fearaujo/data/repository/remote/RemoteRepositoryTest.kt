@@ -7,13 +7,20 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.test.inject
 import java.net.HttpURLConnection
 
 class RemoteRepositoryTest : BaseMockWebServerTest() {
 
-    private val repository by inject<RemoteRepository>()
+    private companion object {
+        const val FILE_SUCCESS = "Success_Response.json"
 
+        const val MOCK_TITLE_1 = "Drankrunner"
+        const val MOCK_TITLE_2 = "Gezellige horecatijgers!"
+    }
+
+    private val repository by inject<RemoteRepository>()
 
     override fun setUp() {
         super.setUp()
@@ -22,14 +29,30 @@ class RemoteRepositoryTest : BaseMockWebServerTest() {
         }
     }
 
+    override fun tearDown() {
+        stopKoin()
+        super.tearDown()
+    }
+
     @Test
     fun `call and deserialize with success`() {
-        mockHttpResponse("Success_Response.json", HttpURLConnection.HTTP_OK)
+        mockHttpResponse(fileName = FILE_SUCCESS, responseCode = HttpURLConnection.HTTP_OK)
 
         runBlocking {
             val contractors = repository.fetchContractorsByDate(0)
-            Assert.assertEquals("Drankrunner", contractors[0].title)
-            Assert.assertEquals("Gezellige horecatijgers!", contractors[1].title)
+            Assert.assertEquals(MOCK_TITLE_1, contractors[0].title)
+            Assert.assertEquals(MOCK_TITLE_2, contractors[1].title)
+        }
+    }
+
+    @Test(expected = Exception::class)
+    fun `fail on response`() {
+        mockHttpResponse(responseCode = HttpURLConnection.HTTP_BAD_REQUEST)
+
+        runBlocking {
+            val contractors = repository.fetchContractorsByDate(0)
+            Assert.assertEquals(MOCK_TITLE_1, contractors[0].title)
+            Assert.assertEquals(MOCK_TITLE_2, contractors[1].title)
         }
     }
 

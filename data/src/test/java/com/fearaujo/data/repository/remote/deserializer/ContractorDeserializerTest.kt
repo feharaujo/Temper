@@ -13,6 +13,13 @@ import java.util.*
 
 class ContractorDeserializerTest {
 
+    private companion object {
+        const val FILE_SUCCESS = "Success_Response.json"
+
+        const val MOCK_TITLE_1 = "Drankrunner"
+        const val MOCK_TITLE_2 = "Gezellige horecatijgers!"
+    }
+
     private lateinit var gson: Gson
     private lateinit var type: Type
 
@@ -26,12 +33,12 @@ class ContractorDeserializerTest {
 
     @Test
     fun `should deserialize with success from json file with custom deserializer`() {
-        val jsonFile = this.javaClass.classLoader!!.getResourceAsStream("Success_Response.json")
+        val jsonFile = this.javaClass.classLoader!!.getResourceAsStream(FILE_SUCCESS)
         val jsonString = convertStreamToString(jsonFile)
 
         val contractors = gson.fromJson<ArrayList<Contractor>>(jsonString, type)
-        Assert.assertEquals("Drankrunner", contractors[0].title)
-        Assert.assertEquals("Gezellige horecatijgers!", contractors[1].title)
+        Assert.assertEquals(MOCK_TITLE_1, contractors[0].title)
+        Assert.assertEquals(MOCK_TITLE_2, contractors[1].title)
     }
 
     private fun convertStreamToString(inputStream: InputStream): String {
