@@ -1,16 +1,13 @@
 package com.fearaujo.data.di
 
 import android.util.Log
-import com.fearaujo.data.repository.remote.RemoteRepository
-import com.fearaujo.data.repository.remote.RemoteRepositoryImpl
-import com.fearaujo.data.repository.remote.api.TemperAPI
 import com.fearaujo.data.repository.remote.deserializer.ContractorDeserializer
 import com.fearaujo.model.Contractor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import com.squareup.picasso.OkHttp3Downloader
 import okhttp3.Interceptor
-
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -18,9 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object RepositoryModule {
+object NetworkModule {
 
-    val networkModule = module {
+    val module = module {
 
         single {
             val gsonBuilder = GsonBuilder()
@@ -39,37 +36,27 @@ object RepositoryModule {
         }
         single {
             OkHttpClient.Builder()
-                .connectTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
-                .writeTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
-                .readTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
-                .addInterceptor(get() as Interceptor)
-                .build()
+                    .connectTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
+                    .writeTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
+                    .readTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
+                    .addInterceptor(get() as Interceptor)
+                    .build()
         }
 
         single {
             Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .client(get() as OkHttpClient)
-                .addConverterFactory(
-                    GsonConverterFactory.create(
-                        get() as Gson
+                    .baseUrl(BASE_URL)
+                    .client(get() as OkHttpClient)
+                    .addConverterFactory(
+                            GsonConverterFactory.create(
+                                    get() as Gson
+                            )
                     )
-                )
-                .build()
+                    .build()
         }
 
         single {
-            val retrofit = get() as Retrofit
-            retrofit.create(TemperAPI::class.java)
-        }
-
-    }
-
-    val repositoryModule = module {
-        single<RemoteRepository> {
-            RemoteRepositoryImpl(
-                get() as TemperAPI
-            )
+            OkHttp3Downloader(get() as OkHttpClient)
         }
     }
 

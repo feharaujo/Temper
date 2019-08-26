@@ -3,15 +3,13 @@ package com.fearaujo.temper.dashboard
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.fearaujo.data.repository.RepositoryState
 import com.fearaujo.model.Contractor
 import com.fearaujo.temper.R
-import com.squareup.picasso.Picasso
+import com.fearaujo.temper.ui.ContractorItemView
 
 private val DIFF = object : DiffUtil.ItemCallback<Contractor>() {
     override fun areItemsTheSame(oldItem: Contractor, newItem: Contractor): Boolean {
@@ -27,31 +25,10 @@ class MainAdapter : PagedListAdapter<Contractor, RecyclerView.ViewHolder>(DIFF) 
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(repo: Contractor?) {
-            repo?.let {
-                view.findViewById<TextView>(R.id.tvTitle).text = it.title
-                view.findViewById<TextView>(R.id.tvDescription).text = it.client?.description
-
-
-                val photo = getPhotoPath(it)
-                val picasso = Picasso.Builder(view.context)
-                        .build()
-                picasso.load(photo).into(view.findViewById<ImageView>(R.id.photo))
+        fun bind(contractor: Contractor?) {
+            contractor?.let {
+                view.findViewById<ContractorItemView>(R.id.contractorItemView).bind(contractor)
             }
-        }
-
-        private fun getPhotoPath(repo: Contractor) : String{
-            var path = ""
-
-            repo.client?.photos?.get(0)?.formats?.get(0)?.cdnUrl?.let {
-                path = it
-            }
-
-            repo.photo?.let {
-                path = it
-            }
-
-            return path
         }
     }
 
