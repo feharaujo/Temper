@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/ivPhoto"
         android:layout_width="0dp"
-        android:layout_height="170dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/tvTitle"
         app:layout_constraintEnd_toEndOf="parent"
