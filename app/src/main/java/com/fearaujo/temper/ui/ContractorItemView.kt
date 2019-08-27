@@ -4,16 +4,13 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
 import com.fearaujo.model.Contractor
 import com.fearaujo.temper.R
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.contractor_view.view.*
 import org.koin.core.KoinComponent
-import org.koin.core.inject
 
 class ContractorItemView : ConstraintLayout, KoinComponent {
-
-    private val picasso: Picasso by inject()
 
     constructor(context: Context?) : super(context) {
         inflateLayout(context)
@@ -34,8 +31,7 @@ class ContractorItemView : ConstraintLayout, KoinComponent {
     fun bind(contractor: Contractor) {
         val photo = getPhotoPath(contractor)
 
-        picasso.load(photo)
-                .into(ivPhoto)
+        Glide.with(this).load(photo).into(ivPhoto)
 
         tvTitle.text = contractor.title
         tvDescription.text = contractor.client?.description

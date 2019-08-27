@@ -6,7 +6,6 @@ import com.fearaujo.model.Contractor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.squareup.picasso.OkHttp3Downloader
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,10 +52,6 @@ object NetworkModule {
                             )
                     )
                     .build()
-        }
-
-        single {
-            OkHttp3Downloader(get() as OkHttpClient)
         }
     }
 
