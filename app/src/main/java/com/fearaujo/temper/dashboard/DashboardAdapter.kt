@@ -33,6 +33,7 @@ class MainAdapter : PagedListAdapter<Contractor, RecyclerView.ViewHolder>(DIFF) 
     }
 
     private var networkState: RepositoryState? = null
+    private var loadingViewHolder: ViewHolder? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -93,8 +94,12 @@ class MainAdapter : PagedListAdapter<Contractor, RecyclerView.ViewHolder>(DIFF) 
     }
 
     private fun createLoadingView(parent: ViewGroup): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_loading_cell, parent, false)
-        return ViewHolder(view)
+        if(loadingViewHolder == null) {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_loading_cell, parent, false)
+            loadingViewHolder = ViewHolder(view)
+        }
+
+        return loadingViewHolder as ViewHolder
     }
 
     private fun hasExtraRow() = networkState != null && networkState == RepositoryState.Loading

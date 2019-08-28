@@ -23,6 +23,7 @@ buildscript {
 
         // Image
         glide_version = '4.9.0'
+        lottie_version = '3.0.7'
 
         // Koin
         koin_version = '2.0.1'

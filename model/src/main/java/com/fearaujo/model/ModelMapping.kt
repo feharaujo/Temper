@@ -7,7 +7,8 @@ data class Contractor(
         val id: Int?,
         val photo: String?,
         val client: Client?,
-        @SerializedName("job_category") val jobCategory: JobCategory?
+        @SerializedName("job_category") val jobCategory: JobCategory?,
+        @SerializedName("max_possible_earnings_hour") val maxEarningHour: Float?
 )
 
 data class Client(
