@@ -35,6 +35,7 @@ class ContractorItemView : ConstraintLayout, KoinComponent {
 
         tvTitle.text = contractor.title
         tvDescription.text = contractor.client?.description
+        tvCategory.text = contractor.jobCategory?.description
     }
 
     // TODO : REFACTOR
