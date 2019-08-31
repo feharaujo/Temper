@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.junit.Assert
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import java.io.InputStream
@@ -37,8 +38,21 @@ class ContractorDeserializerTest {
         val jsonString = convertStreamToString(jsonFile)
 
         val contractors = gson.fromJson<ArrayList<Contractor>>(jsonString, type)
-        Assert.assertEquals(MOCK_TITLE_1, contractors[0].title)
-        Assert.assertEquals(MOCK_TITLE_2, contractors[1].title)
+
+        assertEquals(MOCK_TITLE_1, contractors[0].title)
+        assertEquals(MOCK_TITLE_2, contractors[1].title)
+
+        assertNotNull(contractors[0])
+        assertNotNull(contractors[1])
+
+        assertNotNull(contractors[0].jobCategory)
+        assertNotNull(contractors[1].jobCategory)
+
+        assertNotNull(contractors[0].shifts)
+        assertNotNull(contractors[1].shifts)
+
+        assertNotNull(contractors[0].client)
+        assertNotNull(contractors[1].client)
     }
 
     private fun convertStreamToString(inputStream: InputStream): String {

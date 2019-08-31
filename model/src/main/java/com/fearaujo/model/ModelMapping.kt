@@ -8,7 +8,8 @@ data class Contractor(
         val photo: String?,
         val client: Client?,
         @SerializedName("job_category") val jobCategory: JobCategory?,
-        @SerializedName("max_possible_earnings_hour") val maxEarningHour: Float?
+        @SerializedName("max_possible_earnings_hour") val maxEarningHour: Float?,
+        val shifts: List<Shift>?
 )
 
 data class Client(
@@ -27,4 +28,9 @@ data class Format(
 data class JobCategory(
         val description: String?,
         @SerializedName("icon_path") val iconPath: String?
+)
+
+data class Shift(
+        @SerializedName("start_time") val startTime: String?,
+        @SerializedName("end_time") val endTime: String?
 )

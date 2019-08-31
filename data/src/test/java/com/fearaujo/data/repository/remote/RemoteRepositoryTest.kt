@@ -25,7 +25,7 @@ class RemoteRepositoryTest : BaseMockWebServerTest() {
     override fun setUp() {
         super.setUp()
         startKoin {
-            modules(listOf(setUpMockNetworkDependencies(getMockUrl()), NetworkModule.repositoryModule))
+            modules(listOf(setUpMockNetworkDependencies(getMockUrl()), NetworkModule.module))
         }
     }
 

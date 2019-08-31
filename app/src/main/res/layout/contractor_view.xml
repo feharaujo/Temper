@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -22,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/default_margin"
         android:ellipsize="end"
         android:lines="1"
         android:maxLines="1"
@@ -29,9 +31,24 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvTitle"
-        app:layout_constraintEnd_toEndOf="@+id/ivPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/tvEarning"
         app:layout_constraintStart_toStartOf="@+id/ivPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/ivPhoto" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
+        tools:text="Category" />
+
+    <TextView
+        android:id="@+id/tvEarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvCategory"
+        tools:text="EUR 15,60" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -43,19 +60,21 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvDescription"
+        tools:text="Title"
+        app:layout_constraintBottom_toTopOf="@+id/tvShift"
         app:layout_constraintEnd_toEndOf="@+id/ivPhoto"
         app:layout_constraintStart_toStartOf="@+id/ivPhoto"
         app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
     <TextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/tvShift"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="16sp"
+        tools:text="14:00 - 21:00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="@+id/tvTitle"

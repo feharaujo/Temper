@@ -15,6 +15,11 @@ import org.koin.core.parameter.parametersOf
 
 class ContractorItemView : ConstraintLayout, KoinComponent {
 
+    private companion object {
+        const val EURO = '\u20ac'
+        const val NUMBER_FORMAT = "%.2f"
+    }
+
     private val imageLoader: ImageLoader by inject { parametersOf(this.context) }
 
     constructor(context: Context?) : super(context) {
@@ -35,8 +40,16 @@ class ContractorItemView : ConstraintLayout, KoinComponent {
 
     fun bind(contractor: Contractor) {
         tvTitle.text = contractor.title
-        tvDescription.text = contractor.client?.description
         tvCategory.text = contractor.jobCategory?.description
+
+        contractor.maxEarningHour?.let {
+            val value = String.format(NUMBER_FORMAT, it)
+            tvEarning.text = tvEarning.context.getString(R.string.earning_per_hour, EURO, value)
+        }
+
+        contractor.shifts?.get(0)?.let {
+            tvShift.text = tvShift.context.getString(R.string.shift_hours, it.startTime, it.endTime)
+        }
 
         imageLoader.loadImage(contractor.getImagePath(), ivPhoto)
     }
