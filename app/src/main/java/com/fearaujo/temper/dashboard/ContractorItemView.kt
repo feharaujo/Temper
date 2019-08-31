@@ -1,16 +1,21 @@
-package com.fearaujo.temper.ui
+package com.fearaujo.temper.dashboard
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.bumptech.glide.Glide
+import com.fearaujo.data.extension.getImagePath
 import com.fearaujo.model.Contractor
 import com.fearaujo.temper.R
+import com.fearaujo.temper.ui.image.ImageLoader
 import kotlinx.android.synthetic.main.contractor_view.view.*
 import org.koin.core.KoinComponent
+import org.koin.core.inject
+import org.koin.core.parameter.parametersOf
 
 class ContractorItemView : ConstraintLayout, KoinComponent {
+
+    private val imageLoader: ImageLoader by inject { parametersOf(this.context) }
 
     constructor(context: Context?) : super(context) {
         inflateLayout(context)
@@ -29,27 +34,10 @@ class ContractorItemView : ConstraintLayout, KoinComponent {
     }
 
     fun bind(contractor: Contractor) {
-        val photo = getPhotoPath(contractor)
-
-        Glide.with(this).load(photo).into(ivPhoto)
-
         tvTitle.text = contractor.title
         tvDescription.text = contractor.client?.description
         tvCategory.text = contractor.jobCategory?.description
-    }
 
-    // TODO : REFACTOR
-    private fun getPhotoPath(repo: Contractor): String {
-        var path = ""
-
-        repo.client?.photos?.get(0)?.formats?.get(0)?.cdnUrl?.let {
-            path = it
-        }
-
-        repo.photo?.let {
-            path = it
-        }
-
-        return path
+        imageLoader.loadImage(contractor.getImagePath(), ivPhoto)
     }
 }

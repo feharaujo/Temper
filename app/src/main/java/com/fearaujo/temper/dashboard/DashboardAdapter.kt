@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fearaujo.data.repository.RepositoryState
 import com.fearaujo.model.Contractor
 import com.fearaujo.temper.R
-import com.fearaujo.temper.ui.ContractorItemView
 
 private val DIFF = object : DiffUtil.ItemCallback<Contractor>() {
     override fun areItemsTheSame(oldItem: Contractor, newItem: Contractor): Boolean {

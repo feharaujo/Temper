@@ -15,6 +15,8 @@ class ContractorDeserializer : JsonDeserializer<ArrayList<Contractor>> {
         json?.let { rootElement ->
             val rootObject = rootElement.asJsonObject
             val dataObject = rootObject.getAsJsonObject(DATA_NODE_KEY)
+
+            // since the date is specified as a parameter it's just necessary to get just the first object
             val contractorsArray = dataObject.entrySet().toTypedArray()[0].value.asJsonArray
             contractorsArray.forEach { contractorElement ->
                 val contractor = context?.deserialize<Contractor>(contractorElement, Contractor::class.java)
