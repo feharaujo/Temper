@@ -20,8 +20,9 @@ class DashboardFragment : Fragment() {
     private val viewModel by viewModel<DashboardViewModel>()
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.dashboard_fragment, container, false)
     }
 
@@ -48,12 +49,28 @@ class DashboardFragment : Fragment() {
 
     private fun onStateChange(repositoryState: RepositoryState) {
         when (repositoryState) {
-            is RepositoryState.OnError -> showSnackBar(getString(R.string.error_fetching_data))
+            is RepositoryState.OnError -> {
+                hideCenterLoading()
+                showSnackBar(getString(R.string.error_fetching_data))
+            }
+            is RepositoryState.Success -> {
+                hideCenterLoading()
+                showRecyclerView()
+            }
         }
     }
 
     private fun showSnackBar(message: String) {
-        (activity as MainActivity).showSnackBar(message)
+        (activity as MainActivity).showToastError(message)
+    }
+
+    private fun hideCenterLoading() {
+        loadingView.pauseAnimation()
+        loadingView.visibility = View.GONE
+    }
+
+    private fun showRecyclerView() {
+        recyclerView.visibility = View.VISIBLE
     }
 
 }

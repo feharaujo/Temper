@@ -15,21 +15,21 @@ object DashboardModule {
 
         single {
             PagedList.Config.Builder()
-                    .setPrefetchDistance(PARAM_ITEM_DISTANCE)
-                    .setEnablePlaceholders(true)
-                    .build()
+                .setPrefetchDistance(PARAM_ITEM_DISTANCE)
+                .setEnablePlaceholders(true)
+                .build()
         }
 
         single { (scope: CoroutineScope) ->
             RepositorySourceFactory(
-                    get() as RemoteRepository,
-                    scope
+                get() as RemoteRepository,
+                scope
             )
         }
 
         viewModel<DashboardViewModel> {
             DashboardViewModelImpl(
-                    get() as PagedList.Config
+                get() as PagedList.Config
             )
         }
     }

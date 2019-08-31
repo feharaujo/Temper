@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:fitsSystemWindows="true"
+        android:visibility="gone"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -23,5 +24,19 @@
         app:navGraph="@navigation/screen_navigation"
         tools:itemCount="1"
         tools:listitem="@layout/item_main_cell" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loadingView"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/animation_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
