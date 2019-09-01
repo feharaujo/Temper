@@ -10,61 +10,9 @@
     android:paddingTop="@dimen/default_margin"
     android:paddingBottom="@dimen/bottom_margin">
 
-    <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:ellipsize="end"
-        android:lines="1"
-        android:maxLines="1"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/normal_font_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvTitle"
-        app:layout_constraintEnd_toStartOf="@+id/tvEarning"
-        app:layout_constraintStart_toStartOf="@+id/ivPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
-        tools:text="Category" />
-
-    <TextView
-        android:id="@+id/tvEarning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/medium_font_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvCategory"
-        tools:text="EUR 15,60" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/medium_font_size"
-        android:textStyle="bold"
-        tools:text="Title"
-        app:layout_constraintBottom_toTopOf="@+id/tvShift"
-        app:layout_constraintEnd_toEndOf="@+id/ivPhoto"
-        app:layout_constraintStart_toStartOf="@+id/ivPhoto"
-        app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+    <include
+        android:id="@+id/general_view"
+        layout="@layout/contractor_general_view" />
 
     <TextView
         android:id="@+id/tvShift"
@@ -74,10 +22,10 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="@dimen/normal_font_size"
-        tools:text="14:00 - 21:00"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-        app:layout_constraintStart_toStartOf="@+id/tvTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        app:layout_constraintEnd_toEndOf="@+id/general_view"
+        app:layout_constraintStart_toStartOf="@+id/general_view"
+        app:layout_constraintTop_toBottomOf="@+id/general_view"
+        tools:text="14:00 - 21:00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

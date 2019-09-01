@@ -8,6 +8,8 @@ import com.fearaujo.data.extension.getImagePath
 import com.fearaujo.model.Contractor
 import com.fearaujo.temper.R
 import com.fearaujo.temper.ui.image.ImageLoader
+import kotlinx.android.synthetic.main.contractor_general_view.view.*
+import kotlinx.android.synthetic.main.contractor_view.*
 import kotlinx.android.synthetic.main.contractor_view.view.*
 import org.koin.core.KoinComponent
 import org.koin.core.inject

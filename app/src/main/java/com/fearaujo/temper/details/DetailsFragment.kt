@@ -13,6 +13,7 @@ import com.fearaujo.temper.R
 import com.fearaujo.temper.ui.EURO
 import com.fearaujo.temper.ui.NUMBER_FORMAT
 import com.fearaujo.temper.ui.image.ImageLoader
+import kotlinx.android.synthetic.main.contractor_general_view.*
 import kotlinx.android.synthetic.main.fragment_detail.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

@@ -7,67 +7,14 @@
     tools:context=".details.DetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:paddingTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="?attr/actionBarSize"
         tools:context=".details.DetailsFragment">
 
-        <ImageView
-            android:id="@+id/ivPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/default_margin"
-            android:layout_marginTop="@dimen/bottom_margin"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:ellipsize="end"
-            android:lines="1"
-            android:maxLines="1"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
-            app:layout_constraintEnd_toStartOf="@+id/tvEarning"
-            app:layout_constraintStart_toStartOf="@+id/ivPhoto"
-            app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
-            tools:text="Category" />
-
-        <TextView
-            android:id="@+id/tvEarning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/default_margin"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCategory"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvCategory"
-            tools:text="EUR 15,60" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/medium_font_size"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/tvEarning"
-            app:layout_constraintStart_toStartOf="@+id/tvCategory"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategory"
-            tools:text="Title" />
+        <include
+            android:id="@+id/general_view"
+            layout="@layout/contractor_general_view" />
 
         <TextView
             android:id="@+id/tvDescription"
@@ -75,26 +22,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="@dimen/normal_font_size"
-            app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-            app:layout_constraintStart_toStartOf="@+id/tvTitle"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            app:layout_constraintEnd_toEndOf="@+id/general_view"
+            app:layout_constraintStart_toStartOf="@+id/general_view"
+            app:layout_constraintTop_toBottomOf="@+id/general_view"
             tools:text="Description" />
 
         <TextView
             android:id="@+id/shiftLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_margin"
             android:layout_marginEnd="@dimen/default_margin"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/medium_font_size"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/bottom_margin"
             android:text="@string/shifts_label"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/large_font_size"
+            android:textStyle="bold"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="@+id/tvDescription"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            tools:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/shiftsContainer"

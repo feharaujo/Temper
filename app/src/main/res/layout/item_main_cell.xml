@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.fearaujo.temper.dashboard.ContractorItemView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.fearaujo.temper.dashboard.ContractorItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/contractorItemView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
