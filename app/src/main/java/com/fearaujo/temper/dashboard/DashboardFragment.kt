@@ -6,16 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fearaujo.data.repository.RepositoryState
+import com.fearaujo.model.Contractor
 import com.fearaujo.temper.MainActivity
 import com.fearaujo.temper.R
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : Fragment(), ContractorListener {
 
-    private val adapter = MainAdapter()
+    private val adapter = MainAdapter(this)
 
     private val viewModel by viewModel<DashboardViewModel>()
 
@@ -39,6 +41,12 @@ class DashboardFragment : Fragment() {
             adapter.setNetworkState(state)
             onStateChange(state)
         })
+    }
+
+
+    override fun onSelect(contractor: Contractor) {
+        val action = DashboardFragmentDirections.detailsFlow(contractor)
+        findNavController().navigate(action)
     }
 
     private fun setupRecyclerView() {

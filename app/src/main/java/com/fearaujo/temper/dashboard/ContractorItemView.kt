@@ -44,7 +44,7 @@ class ContractorItemView : ConstraintLayout, KoinComponent {
 
         contractor.maxEarningHour?.let {
             val value = String.format(NUMBER_FORMAT, it)
-            tvEarning.text = tvEarning.context.getString(R.string.earning_per_hour, EURO, value)
+            tvEarning.text = context.getString(R.string.earning_per_hour, EURO, value)
         }
 
         contractor.shifts?.get(0)?.let {

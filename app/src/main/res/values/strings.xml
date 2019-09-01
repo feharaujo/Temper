@@ -2,6 +2,8 @@
     <string name="app_name">Temper</string>
 
     <string name="error_fetching_data">Error on fetching data</string>
+    <string name="shifts_label">Shifts</string>
+
     <string name="earning_per_hour">%1$c %2$s</string>
     <string name="shift_hours">%1$s - %2$s</string>
 

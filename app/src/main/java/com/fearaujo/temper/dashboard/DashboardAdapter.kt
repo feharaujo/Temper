@@ -10,6 +10,10 @@ import com.fearaujo.data.repository.RepositoryState
 import com.fearaujo.model.Contractor
 import com.fearaujo.temper.R
 
+interface ContractorListener {
+    fun onSelect(contractor: Contractor)
+}
+
 private val DIFF = object : DiffUtil.ItemCallback<Contractor>() {
     override fun areItemsTheSame(oldItem: Contractor, newItem: Contractor): Boolean {
         return oldItem.id == newItem.id
@@ -20,13 +24,17 @@ private val DIFF = object : DiffUtil.ItemCallback<Contractor>() {
     }
 }
 
-class MainAdapter : PagedListAdapter<Contractor, RecyclerView.ViewHolder>(DIFF) {
+class MainAdapter(val listener: ContractorListener) :
+        PagedListAdapter<Contractor, RecyclerView.ViewHolder>(DIFF) {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(contractor: Contractor?) {
             contractor?.let {
                 view.findViewById<ContractorItemView>(R.id.contractorItemView).bind(contractor)
+                view.setOnClickListener {
+                    listener.onSelect(contractor)
+                }
             }
         }
     }
@@ -93,7 +101,7 @@ class MainAdapter : PagedListAdapter<Contractor, RecyclerView.ViewHolder>(DIFF) 
     }
 
     private fun createLoadingView(parent: ViewGroup): ViewHolder {
-        if(loadingViewHolder == null) {
+        if (loadingViewHolder == null) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_loading_cell, parent, false)
             loadingViewHolder = ViewHolder(view)
         }

@@ -3,12 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/dashboard_dest">
 
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/dashboard_dest"
         android:name="com.fearaujo.temper.dashboard.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/dashboard_fragment" />
+        tools:layout="@layout/dashboard_fragment">
+
+        <action
+            android:id="@+id/details_flow"
+            app:destination="@+id/detail_dest"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail_dest"
+        android:name="com.fearaujo.temper.details.DetailsFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="contractor"
+            app:argType="com.fearaujo.model.Contractor" />
+
+    </fragment>
 
 </navigation>
