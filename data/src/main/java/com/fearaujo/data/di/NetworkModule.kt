@@ -1,6 +1,7 @@
 package com.fearaujo.data.di
 
 import android.util.Log
+import com.fearaujo.data.repository.remote.api.TemperAPI
 import com.fearaujo.data.repository.remote.deserializer.ContractorDeserializer
 import com.fearaujo.model.Contractor
 import com.google.gson.Gson
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit
 
 object NetworkModule {
 
-    val module = module {
+    fun setUpNetworkDependencies(baseUrl: String) = module {
 
         single {
             val gsonBuilder = GsonBuilder()
@@ -24,6 +25,7 @@ object NetworkModule {
             gsonBuilder.registerTypeAdapter(type, ContractorDeserializer())
             gsonBuilder.create()
         }
+
         factory<Interceptor> {
             val log = object : HttpLoggingInterceptor.Logger {
                 override fun log(message: String) {
@@ -33,25 +35,31 @@ object NetworkModule {
 
             HttpLoggingInterceptor(log)
         }
+
         single {
             OkHttpClient.Builder()
-                    .connectTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
-                    .writeTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
-                    .readTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
-                    .addInterceptor(get() as Interceptor)
-                    .build()
+                .connectTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
+                .writeTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
+                .readTimeout(TIME_OUT_SECS, TimeUnit.SECONDS)
+                .addInterceptor(get() as Interceptor)
+                .build()
         }
 
         single {
             Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .client(get() as OkHttpClient)
-                    .addConverterFactory(
-                            GsonConverterFactory.create(
-                                    get() as Gson
-                            )
+                .baseUrl(baseUrl)
+                .client(get() as OkHttpClient)
+                .addConverterFactory(
+                    GsonConverterFactory.create(
+                        get() as Gson
                     )
-                    .build()
+                )
+                .build()
+        }
+
+        single {
+            val retrofit = get() as Retrofit
+            retrofit.create(TemperAPI::class.java)
         }
     }
 

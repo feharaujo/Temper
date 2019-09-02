@@ -1,6 +1,7 @@
 package com.fearaujo.temper
 
 import android.app.Application
+import com.fearaujo.data.di.BASE_URL
 import com.fearaujo.data.di.NetworkModule
 import com.fearaujo.data.repository.di.RepositoryModule
 import com.fearaujo.temper.dashboard.di.DashboardModule
@@ -13,10 +14,12 @@ class AppApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val modules = listOf(DashboardModule.module,
-                UIModule.module,
-                NetworkModule.module,
-                RepositoryModule.module
+        val modules = listOf(
+            UIModule.imageModule,
+            UIModule.glideModule,
+            NetworkModule.setUpNetworkDependencies(BASE_URL),
+            RepositoryModule.repositoryModule,
+            DashboardModule.module
         )
 
         startKoin {

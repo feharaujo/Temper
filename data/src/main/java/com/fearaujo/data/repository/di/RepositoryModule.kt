@@ -1,23 +1,26 @@
 package com.fearaujo.data.repository.di
 
+import com.fearaujo.data.repository.RepositorySourceFactory
 import com.fearaujo.data.repository.remote.RemoteRepository
 import com.fearaujo.data.repository.remote.RemoteRepositoryImpl
 import com.fearaujo.data.repository.remote.api.TemperAPI
+import kotlinx.coroutines.CoroutineScope
 import org.koin.dsl.module
-import retrofit2.Retrofit
 
 object RepositoryModule {
 
-    val module = module {
+    val repositoryModule = module {
         single<RemoteRepository> {
             RemoteRepositoryImpl(
-                    get() as TemperAPI
+                get() as TemperAPI
             )
         }
 
-        single {
-            val retrofit = get() as Retrofit
-            retrofit.create(TemperAPI::class.java)
+        single { (scope: CoroutineScope) ->
+            RepositorySourceFactory(
+                get() as RemoteRepository,
+                scope
+            )
         }
     }
 

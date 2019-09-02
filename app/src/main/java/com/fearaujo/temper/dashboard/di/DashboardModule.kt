@@ -1,12 +1,9 @@
 package com.fearaujo.temper.dashboard.di
 
 import androidx.paging.PagedList
-import com.fearaujo.data.repository.RepositorySourceFactory
-import com.fearaujo.data.repository.remote.RemoteRepository
 import com.fearaujo.temper.dashboard.DashboardViewModel
 import com.fearaujo.temper.dashboard.DashboardViewModelImpl
 import com.fearaujo.temper.ui.PARAM_ITEM_DISTANCE
-import kotlinx.coroutines.CoroutineScope
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -19,13 +16,6 @@ object DashboardModule {
                 .setPrefetchDistance(PARAM_ITEM_DISTANCE)
                 .setEnablePlaceholders(true)
                 .build()
-        }
-
-        single { (scope: CoroutineScope) ->
-            RepositorySourceFactory(
-                get() as RemoteRepository,
-                scope
-            )
         }
 
         viewModel<DashboardViewModel> {
