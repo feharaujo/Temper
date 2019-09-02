@@ -1,4 +1,4 @@
-package com.fearaujo.data.base
+package com.example.mockwebserver
 
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -34,9 +34,10 @@ abstract class BaseMockWebServerTest : KoinTest {
     fun getMockUrl() = mockServer.url("/").toString()
 
     fun mockHttpResponse(fileName: String? = null, responseCode: Int) = mockServer.enqueue(
-            MockResponse()
-                    .setResponseCode(responseCode)
-                    .setBody(getJson(fileName)))
+        MockResponse()
+            .setResponseCode(responseCode)
+            .setBody(getJson(fileName))
+    )
 
     private fun getJson(path: String?): String {
         return path?.let {
@@ -48,7 +49,6 @@ abstract class BaseMockWebServerTest : KoinTest {
 
     }
 
-    // TODO: refactor
     private fun convertStreamToString(inputStream: InputStream): String {
         val s = Scanner(inputStream).useDelimiter("\\A")
         return if (s.hasNext()) s.next() else ""

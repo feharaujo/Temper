@@ -32,6 +32,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(path: ':model')
+    testImplementation project(path: ':mockwebserver')
 
     implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
@@ -58,5 +59,8 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
     testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3_version"
     testImplementation "org.koin:koin-test:$koin_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$espresso_core_version"
+    implementation "androidx.test.espresso:espresso-idling-resource:$espresso_core_version"
 
 }

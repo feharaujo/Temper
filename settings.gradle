@@ -1,2 +1,2 @@
-include ':app', ':data', ':model'
+include ':app', ':data', ':model', ':mockwebserver'
 rootProject.name='Temper'
