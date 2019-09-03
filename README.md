@@ -1,10 +1,6 @@
 # Temper App
 Android implementation
 
-![](./images/screenshot_2.png=250x250)
-![](./images/screenshot_1.png=250x250)
-
-
 ## Language & Libraries
 - Kotlin
 - Koin (dependency injection)
@@ -49,3 +45,6 @@ Unit tests
 UI Tests (Journey)
 > ./gradlew connectedMockDebugAndroidTest
 - Don't forget to open the emulator :)
+
+![](./images/screenshot_2.png)
+![](./images/screenshot_1.png)
