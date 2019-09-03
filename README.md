@@ -1,6 +1,10 @@
 # Temper App
 Android implementation
 
+![](./images/screenshot_2.png=250x250)
+![](./images/screenshot_1.png=250x250)
+
+
 ## Language & Libraries
 - Kotlin
 - Koin (dependency injection)
