@@ -6,6 +6,13 @@ plugins {
     id("androidx.navigation.safeargs")
 }
 
+configurations {
+    mockDebug
+    mockRelease
+    developDebug
+    developRelease
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -26,6 +33,42 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        develop {
+            applicationId "com.fearaujo.temper"
+        }
+
+        mock {
+            applicationId "com.fearaujo.temper.mock"
+        }
+    }
+
+    sourceSets {
+        develop {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+
+        mock {
+            java.srcDirs = ['src/mock/java']
+            resources.srcDirs = ['src/mock/resources']
+            manifest.srcFile 'src/mock/AndroidManifest.xml'
+        }
+
+        androidTest {
+            setRoot 'src/androidTestMock'
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -33,7 +76,8 @@ dependencies {
 
     implementation project(path: ':data')
     implementation project(path: ':model')
-    androidTestImplementation project(path: ':mockwebserver')
+    mockImplementation project(path: ':mockwebserver')
+    androidTestMockImplementation project(path: ':mockwebserver')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
@@ -67,5 +111,15 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
     androidTestImplementation "androidx.test.uiautomator:uiautomator:$uiautomator_version"
     androidTestImplementation "androidx.test:rules:$espresso_rules_version"
+
+    testMockImplementation "junit:junit:$junit_version"
+    testMockImplementation "org.koin:koin-test:$koin_version"
+    testMockImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
+    androidTestMockImplementation "org.koin:koin-test:$koin_version"
+    androidTestMockImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+    androidTestMockImplementation "androidx.test.uiautomator:uiautomator:$uiautomator_version"
+    androidTestMockImplementation "androidx.test:rules:$espresso_rules_version"
+    androidTestMockImplementation "androidx.test:runner:$test_runner_version"
+
 
 }
