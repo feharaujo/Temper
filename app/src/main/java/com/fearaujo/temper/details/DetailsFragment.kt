@@ -42,7 +42,7 @@ class DetailsFragment : Fragment() {
 
         contractor.maxEarningHour?.let {
             val value = String.format(NUMBER_FORMAT, it)
-            tvEarning.text = tvEarning.context.getString(R.string.earning_per_hour, EURO, value)
+            tvMaxEarning.text = tvMaxEarning.context.getString(R.string.earning_per_hour, EURO, value)
         }
 
         tvDescription.text = contractor.client?.description

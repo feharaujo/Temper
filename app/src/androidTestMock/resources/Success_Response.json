@@ -1,0 +1,139 @@
+{
+  "data": {
+    "2019-09-03": [
+      {
+        "title": "(Ervaren) bedienings medewerker",
+        "id": 19423,
+        "key": "8y9gqy",
+        "date": {
+          "date": "2019-09-03 16:00:00",
+          "timezone_type": 3,
+          "timezone": "Europe/Amsterdam"
+        },
+        "allows_factoring": true,
+        "location": {
+          "lat": "52.308535",
+          "lng": "4.810826"
+        },
+        "distance": 14,
+        "url": "https://temper.works/werken-bij/steigenberger-airport-hotel-amsterdam/bediening/ervaren-bedienings-medewerker",
+        "max_possible_earnings_hour": 17,
+        "max_possible_earnings_total": 136,
+        "client": {
+          "name": "Steigenberger Airport Hotel Amsterdam",
+          "id": "8gyqz8",
+          "photos": [
+            {
+              "formats": [
+                {
+                  "cdn_url": "https://tmpr-photos.ams3.digitaloceanspaces.com/hero/96732.jpg"
+                }
+              ]
+            }
+          ],
+          "description": "Het Steigenberger Airport Hotel Amsterdam bij de luchthaven Schiphol (ca. 10 minuten rijden, gratis shuttleservice) ligt op ongeveer 15 km afstand van de binnenstad. Tegenover het hotel ligt het Amsterdamse Bos, waar u kunt joggen, fietsen en wandelen. Dankzij de geluidsisolerende ramen in 440 kamers en suites geniet u van een ontspannen nachtrust. Warme aardekleuren en natuurlijke materialen zorgen voor een behaaglijke sfeer. Tot de comfortabele uitrusting behoort een flatscreen-tv, airconditioning, bureau, kluisje en minibar.",
+          "factoring_allowed": true,
+          "factoring_payment_term_in_days": 3
+        },
+        "job_category": {
+          "description": "Bediening",
+          "icon_path": "/assets/img/web/icons/categories/white-line/icon-bediening.svg",
+          "slug": "bediening"
+        },
+        "open_positions": 2,
+        "new_matches_count": 3,
+        "shifts": [
+          {
+            "tempers_needed": 3,
+            "earnings_per_hour": 17,
+            "duration": 8,
+            "currency": "EUR",
+            "start_date": "2019-09-03",
+            "start_time": "16:00",
+            "start_datetime": "2019-09-03 16:00:00",
+            "end_time": "00:00",
+            "end_datetime": "2019-09-04 00:00:00",
+            "is_auto_accepted_when_applied_for": 0
+          },
+          {
+            "tempers_needed": 1,
+            "earnings_per_hour": 17,
+            "duration": 8,
+            "currency": "EUR",
+            "start_date": "2019-09-04",
+            "start_time": "16:00",
+            "start_datetime": "2019-09-03 16:00:00",
+            "end_time": "00:00",
+            "end_datetime": "2019-09-04 00:00:00",
+            "is_auto_accepted_when_applied_for": 0
+          }
+        ]
+      },
+      {
+        "title": "Ambassadors for  first zero energy hotel",
+        "id": 24759,
+        "key": "8gga7r",
+        "date": {
+          "date": "2019-09-03 16:00:00",
+          "timezone_type": 3,
+          "timezone": "Europe/Amsterdam"
+        },
+        "allows_factoring": false,
+        "location": {
+          "lat": "52.354482",
+          "lng": "5.005239"
+        },
+        "distance": 1,
+        "url": "https://temper.works/werken-bij/hotel-breeze-amsterdam-b-v/bediening/ambassadors-for-first-zero-energy-hotel",
+        "max_possible_earnings_hour": 16.5,
+        "max_possible_earnings_total": 132,
+        "client": {
+          "name": "Hotel Breeze Amsterdam",
+          "id": "xverzq",
+          "photos": [
+            {
+              "formats": [
+                {
+                  "cdn_url": "https://tmpr-photos.ams3.digitaloceanspaces.com/hero/109665.jpg"
+                }
+              ]
+            }
+          ],
+          "description": "Hotel Breeze Amsterdam is 's werelds 1e Zero Energy hotel. Voorjaar 2019 openen wij onze deuren op prachtig IJburg!",
+          "factoring_allowed": false,
+          "factoring_payment_term_in_days": 3
+        },
+        "job_category": {
+          "description": "Bediening",
+          "icon_path": "/assets/img/web/icons/categories/white-line/icon-bediening.svg",
+          "slug": "bediening"
+        },
+        "open_positions": 1,
+        "new_matches_count": 0,
+        "photo": "https://tmpr-photos.ams3.digitaloceanspaces.com/hero/117951.jpg",
+        "shifts": [
+          {
+            "tempers_needed": 1,
+            "earnings_per_hour": 16.5,
+            "duration": 8,
+            "currency": "EUR",
+            "start_date": "2019-09-03",
+            "start_time": "16:00",
+            "start_datetime": "2019-09-03 16:00:00",
+            "end_time": "00:00",
+            "end_datetime": "2019-09-04 00:00:00",
+            "is_auto_accepted_when_applied_for": 0
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "api_version": {
+      "current": 2,
+      "latest": 2,
+      "released": "2018-05-01T00:00:00+02:00",
+      "deprecation_date": null
+    }
+  }
+}
