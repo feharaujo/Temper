@@ -1,6 +1,6 @@
 package com.fearaujo.data.repository.remote
 
-import com.fearaujo.data.base.BaseMockWebServerTest
+import com.example.mockwebserver.BaseMockWebServerTest
 import com.fearaujo.data.di.NetworkModule
 import com.fearaujo.data.repository.di.RepositoryModule
 import kotlinx.coroutines.runBlocking
@@ -26,8 +26,8 @@ class RemoteRepositoryTest : BaseMockWebServerTest() {
         super.setUp()
         startKoin {
             modules(listOf(
-                NetworkModule.setUpNetworkDependencies(getMockUrl()),
-                RepositoryModule.repositoryModule
+                RepositoryModule.repositoryModule,
+                NetworkModule.setUpNetworkDependencies(getMockUrl())
             ))
         }
     }
