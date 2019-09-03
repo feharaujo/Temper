@@ -46,5 +46,9 @@ UI Tests (Journey)
 > ./gradlew connectedMockDebugAndroidTest
 - Don't forget to open the emulator :)
 
+## Screenshots
+### Dashboard
 ![](./images/screenshot_2.png)
+
+### Details
 ![](./images/screenshot_1.png)
