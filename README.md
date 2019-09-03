@@ -45,3 +45,6 @@ Unit tests
 UI Tests (Journey)
 > ./gradlew connectedMockDebugAndroidTest
 - Don't forget to open the emulator :)
+
+![](./images/screenshot_2.png)
+![](./images/screenshot_1.png)
