@@ -5,6 +5,7 @@ import com.fearaujo.data.di.BASE_URL
 import com.fearaujo.data.di.NetworkModule
 import com.fearaujo.data.repository.di.RepositoryModule
 import com.fearaujo.temper.dashboard.di.DashboardModule
+import com.fearaujo.temper.details.di.DetailsModule
 import com.fearaujo.temper.ui.di.UIModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -19,7 +20,8 @@ class AppApplication : Application() {
             UIModule.glideModule,
             NetworkModule.setUpNetworkDependencies(BASE_URL),
             RepositoryModule.repositoryModule,
-            DashboardModule.module
+            DashboardModule.module,
+            DetailsModule.module
         )
 
         startKoin {

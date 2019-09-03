@@ -5,6 +5,7 @@ import com.fearaujo.data.di.NetworkModule
 import com.fearaujo.data.repository.di.RepositoryModule
 import com.fearaujo.temper.common.DisableAnimationsRule
 import com.fearaujo.temper.dashboard.di.DashboardModule
+import com.fearaujo.temper.details.di.DetailsModule
 import com.fearaujo.temper.ui.di.UIModule
 import org.junit.Rule
 import org.koin.core.context.startKoin
@@ -24,7 +25,8 @@ open class BaseJourneyTest : BaseMockWebServerTest() {
             UIModule.glideModule,
             NetworkModule.setUpNetworkDependencies(getMockUrl()),
             RepositoryModule.repositoryModule,
-            DashboardModule.module
+            DashboardModule.module,
+            DetailsModule.module
         )
 
         startKoin {

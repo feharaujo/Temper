@@ -6,6 +6,7 @@ import com.fearaujo.data.di.NetworkModule
 import com.fearaujo.data.repository.RepositorySourceFactory
 import com.fearaujo.data.repository.di.RepositoryModule
 import com.fearaujo.temper.dashboard.di.DashboardModule
+import com.fearaujo.temper.details.di.DetailsModule
 import com.fearaujo.temper.ui.di.UIModule
 import com.fearaujo.temper.ui.image.ImageLoader
 import kotlinx.coroutines.CoroutineScope
@@ -54,7 +55,8 @@ class KoinDependenciesTest : KoinTest {
             UIModule.imageModule,
             NetworkModule.setUpNetworkDependencies(MOCK_BASE_URL),
             DashboardModule.module,
-            RepositoryModule.repositoryModule
+            RepositoryModule.repositoryModule,
+            DetailsModule.module
         )
 
         startKoin {

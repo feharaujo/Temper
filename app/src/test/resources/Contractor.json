@@ -1,0 +1,57 @@
+{
+  "title": "Drankrunner",
+  "id": 7100,
+  "key": "8zyyvr",
+  "date": {
+    "date": "2019-08-24 16:00:00",
+    "timezone_type": 3,
+    "timezone": "Europe\/Amsterdam"
+  },
+  "allows_factoring": true,
+  "location": {
+    "lat": "52.349851",
+    "lng": "4.912591"
+  },
+  "distance": 6,
+  "url": "https:\/\/temper.works\/werken-bij\/hesp-amsterdam-beheer-b-v\/bediening\/drankrunner",
+  "max_possible_earnings_hour": 16.5,
+  "max_possible_earnings_total": 132,
+  "client": {
+    "name": "Hesp Amsterdam",
+    "id": "86769e",
+    "photos": [
+      {
+        "formats": [
+          {
+            "cdn_url": "https:\/\/tmpr-photos.ams3.digitaloceanspaces.com\/hero\/43929.jpg"
+          }
+        ]
+      }
+    ],
+    "description": "Café Hesp is een echt Amsterdams biercafé met in de zomer een zonovergoten terras direct aan de Amstel! Samen zorgen we ervoor dat alle gasten van Hesp kunnen genieten van bijzondere biertjes, lekkere koffie en stoere gerechten.",
+    "factoring_allowed": true,
+    "factoring_payment_term_in_days": 3
+  },
+  "job_category": {
+    "description": "Bediening",
+    "icon_path": "\/assets\/img\/web\/icons\/categories\/white-line\/icon-bediening.svg",
+    "slug": "bediening"
+  },
+  "open_positions": 1,
+  "new_matches_count": 0,
+  "photo": "https:\/\/tmpr-photos.ams3.digitaloceanspaces.com\/hero\/85624.jpg",
+  "shifts": [
+    {
+      "tempers_needed": 2,
+      "earnings_per_hour": 16.5,
+      "duration": 8,
+      "currency": "EUR",
+      "start_date": "2019-08-24",
+      "start_time": "16:00",
+      "start_datetime": "2019-08-24 16:00:00",
+      "end_time": "00:00",
+      "end_datetime": "2019-08-25 00:00:00",
+      "is_auto_accepted_when_applied_for": 0
+    }
+  ]
+}

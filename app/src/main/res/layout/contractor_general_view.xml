@@ -7,8 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/default_margin"
     android:layout_marginEnd="@dimen/default_margin"
-    android:paddingTop="@dimen/default_margin"
-    android:paddingBottom="@dimen/bottom_margin">
+    android:paddingTop="@dimen/default_margin">
 
     <ImageView
         android:id="@+id/ivPhoto"
